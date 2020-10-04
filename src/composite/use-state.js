@@ -2,7 +2,8 @@ import { reactive, onMounted, onUnmounted } from 'vue';
 
 export default function useState() {
   const state = reactive({
-    showDrawer: false
+    showDrawer: false,
+    date: new Date(),
   })
 
   const toggleDrawer = () => {
