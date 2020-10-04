@@ -1,13 +1,17 @@
 <template>
   <div class="header">
-    Header
+    <menu-icon />
   </div>
 </template>
 
 <script>
+import MenuIcon from '../icons/menu.vue';
 
 export default {
   name: 'Header',
+  components: {
+    MenuIcon,
+  },
   setup() {
   }
 }
