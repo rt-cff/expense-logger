@@ -1,11 +1,14 @@
 <template>
   <div class="header">
-    <menu-icon />
+    <menu-icon class="menu-icon"/>
+    <div class="date">{{date}}</div>
   </div>
 </template>
 
 <script>
-import MenuIcon from '../icons/menu.vue';
+import { inject, computed } from 'vue'
+import MenuIcon from '../icons/menu.vue'
+import { format } from 'date-fns'
 
 export default {
   name: 'Header',
@@ -13,6 +16,12 @@ export default {
     MenuIcon,
   },
   setup() {
+    const dateObj = inject('date')
+    const date = computed(() => format(dateObj, 'yyyy/MM/dd'))
+
+    return {
+      date
+    }
   }
 }
 </script>
@@ -23,5 +32,14 @@ export default {
   background: #806d6d;
   color: white;
   padding: 0.5em 1em;
+  text-align: unset;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.menu-icon {
+  margin-left: -10px;
+  margin-right: 10px;
 }
 </style>
