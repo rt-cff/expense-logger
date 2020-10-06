@@ -17,12 +17,12 @@ export default {
   },
   setup() {
     const dateObj = inject('date')
-    const date = computed(() => format(dateObj, 'yyyy/MM/dd'))
+    const date = computed(() => format(dateObj.value, 'yyyy/MM/dd'))
 
     return {
-      date
+      date,
     }
-  }
+  },
 }
 </script>
 

@@ -10,6 +10,18 @@ export default function useState() {
     state.showDrawer = !state.showDrawer
   }
 
+  // true for tmr, false for ytd
+  const shiftDate = (dir) => {
+    const newDate = new Date(state.date)
+
+    if(dir === true)
+      newDate.setHours(24)
+    if(dir === false)
+      newDate.setHours(-24)
+
+    state.date = newDate
+  }
+
   onMounted(() => {
     console.log('mounted')
   })
@@ -21,5 +33,6 @@ export default function useState() {
   return {
     state,
     toggleDrawer,
+    shiftDate,
   }
 }

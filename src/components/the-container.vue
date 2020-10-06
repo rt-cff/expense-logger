@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { provide } from 'vue'
+import { computed, provide, toRef } from 'vue'
 import useState from '../composite/use-state'
 import Header from './the-header.vue'
 import Content from './the-content.vue'
@@ -24,9 +24,10 @@ export default {
     Footer
   },
   setup() {
-    const { state, toggleDrawer } = useState()
+    const { state, toggleDrawer, shiftDate } = useState()
 
-    provide('date', state.date)
+    provide('date', toRef(state, 'date'))
+    provide('shiftDate', shiftDate)
 
     return {
       state,
