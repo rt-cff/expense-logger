@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <menu-icon class="menu-icon"/>
+    <menu-icon class="menu-icon" @click="toggleDrawer"/>
     <div class="date">{{date}}</div>
   </div>
 </template>
@@ -14,6 +14,9 @@ export default {
   name: 'Header',
   components: {
     MenuIcon,
+  },
+  props: {
+    toggleDrawer: Function,
   },
   setup() {
     const dateObj = inject('date')

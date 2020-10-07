@@ -16,10 +16,12 @@ import useTouchX from '../composite/use-touch-x'
 
 export default {
   name: 'Content',
-  setup() {
-    const shiftDate = inject('shiftDate')
+  props: {
+    shiftDate: Function,
+  },
+  setup({ shiftDate }) {
     const { onTouchStart, onTouchEnd } = useTouchX(() => shiftDate(false), () => shiftDate(true))
-
+    
     return {
       onTouchStart, 
       onTouchEnd,

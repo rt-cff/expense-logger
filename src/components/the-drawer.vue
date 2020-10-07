@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="drawer-container">
     Drawer
   </div>
 </template>
@@ -12,3 +12,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.drawer-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+</style>

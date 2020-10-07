@@ -1,10 +1,12 @@
 <template>
-  <div class="container">
-    <Header />
-    <Content />
+<div class="container">
+  <div class="content-container">
+    <Header :toggleDrawer="toggleDrawer"/>
+    <Content :shiftDate="shiftDate"/>
     <Footer />
   </div>
   <Drawer v-if="state.showDrawer"/>
+</div>
 </template>
 
 <script>
@@ -27,18 +29,19 @@ export default {
     const { state, toggleDrawer, shiftDate } = useState()
 
     provide('date', toRef(state, 'date'))
-    provide('shiftDate', shiftDate)
+    //provide('shiftDate', shiftDate)
 
     return {
       state,
-      toggleDrawer
+      toggleDrawer,
+      shiftDate,
     }
   }
 }
 </script>
 
 <style scoped>
-.container {
+.content-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
