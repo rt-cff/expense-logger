@@ -5,7 +5,7 @@
     <Content :shiftDate="shiftDate"/>
     <Footer />
   </div>
-  <Drawer v-if="state.showDrawer"/>
+  <Drawer v-if="state.showDrawer" :toggleDrawer="toggleDrawer"/>
 </div>
 </template>
 
@@ -29,8 +29,7 @@ export default {
     const { state, toggleDrawer, shiftDate } = useState()
 
     provide('date', toRef(state, 'date'))
-    //provide('shiftDate', shiftDate)
-
+    
     return {
       state,
       toggleDrawer,
