@@ -1,7 +1,15 @@
 <template>
 <div class="container">
   <div class="content-container">
-    <Header :toggleDrawer="toggleDrawer"/>
+    <Header :toggleDrawer="toggleDrawer">
+      <template v-if="hasHeaderContentSlot()" v-slot:header-content>
+        <slot name="header-content">
+        </slot>
+      </template>
+      <template v-slot:header-extra>
+        <slot name="header-extra" />
+      </template>
+    </Header>
     <Content :shiftDate="shiftDate"/>
     <Footer />
   </div>
@@ -25,17 +33,22 @@ export default {
     Drawer,
     Footer
   },
-  setup() {
+  setup(props, { slots }) {
     const { state, toggleDrawer, shiftDate } = useState()
 
     provide('date', toRef(state, 'date'))
     
+    const hasHeaderContentSlot = () => {
+      return !!slots['header-content']
+    }
+
     return {
       state,
       toggleDrawer,
       shiftDate,
+      hasHeaderContentSlot,
     }
-  }
+  },
 }
 </script>
 

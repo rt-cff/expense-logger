@@ -1,7 +1,14 @@
 <template>
   <div class="header">
     <menu-icon class="menu-icon" @click="toggleDrawer"/>
-    <div class="date">{{date}}</div>
+    <div class="header-content">
+      <slot name="header-content">
+        <div class="date">{{date}}</div>
+      </slot>
+    </div>
+    <div class="header-extra">
+      <slot name="header-extra">ccc</slot>
+    </div>
   </div>
 </template>
 
@@ -34,15 +41,20 @@ export default {
   height: 2em;
   background: #806d6d;
   color: white;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.5em;
   text-align: unset;
   display: flex;
   justify-content: start;
   align-items: center;
 }
 
-.menu-icon {
-  margin-left: -10px;
-  margin-right: 10px;
+.header-content {
+  flex-grow:  1;
+  padding: 0px 10px;
+  display: flex;
+}
+
+.header-extra {
+  display: flex;
 }
 </style>
