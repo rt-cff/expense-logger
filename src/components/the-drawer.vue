@@ -1,10 +1,50 @@
 <template>
   <div class="drawer-container" @click="toggleDrawer">
     <div class="drawer-content" @click.stop="">
-      <div><shopping-cart-icon />Expense</div>
-      <div><dollar-sign-icon />Income</div>
-      <div><bar-chart-2-icon />Summary</div>
-      <div><settings-icon />Setting</div>
+      <router-link :to="{ name: 'expense' }"  custom v-slot="{ navigate, isActive, isExactActive }">
+        <div 
+          :class="[isActive && 'router-link-active', isExactActive && 'router-link-exact-active']"
+          @click="navigate" 
+          @keypress.enter="navigate" 
+          role="link"
+        >
+          <shopping-cart-icon />
+          Expense
+        </div>
+      </router-link>
+      <router-link :to="{ name: 'income' }"  custom v-slot="{ navigate, isActive, isExactActive }">
+        <div 
+          :class="[isActive && 'router-link-active', isExactActive && 'router-link-exact-active']"
+          @click="navigate" 
+          @keypress.enter="navigate" 
+          role="link"
+        >
+          <dollar-sign-icon />
+          Income
+        </div>
+      </router-link>
+      <router-link :to="{ name: 'summary' }"  custom v-slot="{ navigate, isActive, isExactActive }">
+        <div 
+          :class="[isActive && 'router-link-active', isExactActive && 'router-link-exact-active']"
+          @click="navigate" 
+          @keypress.enter="navigate" 
+          role="link"
+        >
+          <bar-chart-2-icon />
+          Summary
+        </div>
+      </router-link>
+      <router-link :to="{ name: 'settings' }"  custom v-slot="{ navigate, isActive, isExactActive }">
+        <div 
+          :class="[isActive && 'router-link-active', isExactActive && 'router-link-exact-active']"
+          @click="navigate" 
+          @keypress.enter="navigate" 
+          role="link"
+        >
+          <settings-icon />
+          Setting
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -59,5 +99,9 @@ export default {
   height: 1em;
   width: 1em;
   margin-right: 7px;
+}
+
+div.router-link-active, div.router-link-exact-active {
+  background: lightblue;
 }
 </style>
