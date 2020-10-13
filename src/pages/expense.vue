@@ -7,13 +7,22 @@
 </template>
 
 <script>
+import { inject } from 'vue'
 import Container from '../components/the-container.vue'
+import Content from '../components/the-content.vue'
 
 export default {
   name: 'ExpensePage',
-  functional: true,
   components: {
-    Container
+    Container,
+    Content,
+  }, 
+  setup() {
+    const shiftDate = inject('shiftDate')
+
+    return {
+      shiftDate,
+    }
   }
 }
 </script>

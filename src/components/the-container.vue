@@ -10,16 +10,15 @@
         <slot name="header-extra" />
       </template>
     </Header>
-    <Content :shiftDate="shiftDate"/>
+    <Content :shiftDate="shiftDate" />
     <Footer />
   </div>
-  <Drawer v-if="state.showDrawer" :toggleDrawer="toggleDrawer"/>
+  <Drawer v-if="showDrawer" :toggleDrawer="toggleDrawer"/>
 </div>
 </template>
 
 <script>
-import { computed, provide, toRef } from 'vue'
-import useState from '../composite/use-state'
+import { ref, inject } from 'vue'
 import Header from './the-header.vue'
 import Content from './the-content.vue'
 import Drawer from './the-drawer.vue'
@@ -33,20 +32,25 @@ export default {
     Drawer,
     Footer
   },
+  props: {
+  },
   setup(props, { slots }) {
-    const { state, toggleDrawer, shiftDate } = useState()
+    const showDrawer = ref(false)
+    const shiftDate = inject('shiftDate')
 
-    provide('date', toRef(state, 'date'))
-    
+    const toggleDrawer = () => {
+      showDrawer.value = !showDrawer.value
+    }
+
     const hasHeaderContentSlot = () => {
       return !!slots['header-content']
     }
 
     return {
-      state,
+      hasHeaderContentSlot,
+      showDrawer,
       toggleDrawer,
       shiftDate,
-      hasHeaderContentSlot,
     }
   },
 }
