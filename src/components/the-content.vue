@@ -3,28 +3,21 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <div>
-      Content
-    </div>
+    <slot name="content"/>
   </div>
 </template>
 
 <script>
-import { computed, inject } from 'vue'
-import useState from '../composite/use-state'
-import useTouchX from '../composite/use-touch-x'
-
 export default {
   name: 'Content',
   props: {
-    shiftDate: Function,
-  },
-  setup({ shiftDate }) {
-    const { onTouchStart, onTouchEnd } = useTouchX(() => shiftDate(false), () => shiftDate(true))
-    
-    return {
-      onTouchStart, 
-      onTouchEnd,
+    onTouchStart: {
+      type: Function,
+      default: () => {},
+    },
+    onTouchEnd: {
+      type: Function,
+      default: () => {},
     }
   },
 }

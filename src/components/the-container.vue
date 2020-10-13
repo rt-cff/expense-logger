@@ -10,7 +10,14 @@
         <slot name="header-extra" />
       </template>
     </Header>
-    <Content :shiftDate="shiftDate" />
+    <Content 
+      :onTouchStart="onTouchStart"
+      :onTouchEnd="onTouchEnd"
+    >
+      <template v-slot:content>
+        <slot name="content" />
+      </template>
+    </Content>
     <Footer />
   </div>
   <Drawer v-if="showDrawer" :toggleDrawer="toggleDrawer"/>
@@ -33,10 +40,11 @@ export default {
     Footer
   },
   props: {
+    onTouchStart: Function,
+    onTouchEnd: Function,
   },
   setup(props, { slots }) {
     const showDrawer = ref(false)
-    const shiftDate = inject('shiftDate')
 
     const toggleDrawer = () => {
       showDrawer.value = !showDrawer.value
@@ -50,7 +58,6 @@ export default {
       hasHeaderContentSlot,
       showDrawer,
       toggleDrawer,
-      shiftDate,
     }
   },
 }

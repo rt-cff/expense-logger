@@ -3,6 +3,9 @@
     <template v-slot:header-content>
       <span>Settings</span>
     </template>
+    <template v-slot:content>
+      Some Content in Settings
+    </template>
   </Container>
 </template>
 
@@ -11,9 +14,12 @@ import Container from '../components/the-container.vue'
 
 export default {
   name: 'SummaryPage',
-  functional: true,
   components: {
-    Container
+    Container,
+  },
+  setup() {
+    return {
+    }
   }
 }
 </script>
