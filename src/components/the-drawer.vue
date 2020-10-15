@@ -34,7 +34,7 @@
           Summary
         </div>
       </router-link>
-      <router-link :to="{ name: 'settings' }"  custom v-slot="{ navigate, isActive, isExactActive }">
+      <router-link :to="{ name: 'setting' }"  custom v-slot="{ navigate, isActive, isExactActive }">
         <div 
           :class="[isActive && 'router-link-active', isExactActive && 'router-link-exact-active']"
           @click="navigate" 
