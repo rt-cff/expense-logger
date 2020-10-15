@@ -18,7 +18,7 @@
         <slot name="content" />
       </template>
     </Content>
-    <Footer />
+    <Footer v-if="hasFooter"/>
   </div>
   <Drawer v-if="showDrawer" :toggleDrawer="toggleDrawer"/>
 </div>
@@ -42,6 +42,10 @@ export default {
   props: {
     onTouchStart: Function,
     onTouchEnd: Function,
+    hasFooter: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { slots }) {
     const showDrawer = ref(false)
