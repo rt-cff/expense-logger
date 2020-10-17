@@ -1,6 +1,8 @@
 <template>
   <div class="header">
-    <menu-icon class="menu-icon" @click="toggleDrawer"/>
+    <slot name="header-menu-icon">
+      <menu-icon class="menu-icon" @click="toggleDrawer"/>
+    </slot>
     <div class="header-content">
       <slot name="header-content">
         <div class="date">{{date}}</div>

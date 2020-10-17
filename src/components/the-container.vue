@@ -2,6 +2,10 @@
 <div class="container">
   <div class="content-container">
     <Header :toggleDrawer="toggleDrawer">
+      <template v-if="hasHeaderMenuIconSlot()" v-slot:header-menu-icon>
+        <slot name="header-menu-icon">
+        </slot>
+      </template>
       <template v-if="hasHeaderContentSlot()" v-slot:header-content>
         <slot name="header-content">
         </slot>
@@ -54,6 +58,10 @@ export default {
       showDrawer.value = !showDrawer.value
     }
 
+    const hasHeaderMenuIconSlot = () => {
+      return !!slots['header-menu-icon']
+    }
+
     const hasHeaderContentSlot = () => {
       return !!slots['header-content']
     }
@@ -62,6 +70,7 @@ export default {
       hasHeaderContentSlot,
       showDrawer,
       toggleDrawer,
+      hasHeaderMenuIconSlot,
     }
   },
 }
