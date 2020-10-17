@@ -1,6 +1,5 @@
 <template>
   <Container
-
   >
     <template v-slot:header-content>
       <span>Settings</span>
@@ -11,6 +10,7 @@
           class="item"
           v-for="item in list"
           :key="item.type"
+          @click="$router.push({ name: 'setting-details', params: { id: item.id } })"
         >
           <component :is="item.icon"/> {{item.label}}
         </div>
@@ -31,8 +31,9 @@ export default {
     TagIcon,
   },
   setup() {
+
     return {
-      list: SettingsItemsList
+      list: SettingsItemsList,
     }
   }
 }

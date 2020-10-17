@@ -1,7 +1,8 @@
 export const SettingsItemsList = [
   {
+    id: 'category',
     label: 'Category',
-    type: 'category',
     icon: 'tag-icon',
+    component: 'setting-details-category',
   }
 ]
