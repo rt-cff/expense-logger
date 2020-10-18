@@ -2,7 +2,7 @@
   <Container
     :onTouchStart="onTouchStart"
     :onTouchEnd="onTouchEnd"
-    hasFooter="true"
+    :hasFooter="true"
   >
     <template v-slot:header-extra>
       <span>Header Extra</span>
