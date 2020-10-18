@@ -77,9 +77,9 @@ export default {
 </script>
 
 <style scoped>
-.content-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
 </style>

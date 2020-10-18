@@ -28,6 +28,5 @@ export default {
     height: -webkit-fill-available;
     background: #eb835e;
     color: white;
-    padding: 1em 2em;
   }
 </style>

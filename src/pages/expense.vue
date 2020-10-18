@@ -35,6 +35,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  ::v-deep(.content) {
+    padding: 1em 2em;
+  }
 </style>
